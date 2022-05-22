@@ -34,7 +34,7 @@ $placeName = ['khulna', 'dhaka', 'cumillah', 'barisal', 'jessore', 'kushtia', 'k
     <?php
         $outputArray = [];
 
-        if(($_POST['character'] != null) && $_POST['number'] != null) {
+        if((@$_POST['character'] != null) && $_POST['number'] != null) {
             $character = $_POST['character'];
             $number = $_POST['number'];
 
@@ -43,19 +43,18 @@ $placeName = ['khulna', 'dhaka', 'cumillah', 'barisal', 'jessore', 'kushtia', 'k
                     array_push($outputArray,$name);
                 }
             }
-
-            print_r ($outputArray);
+            echo implode(",", $outputArray);
             
         }
         
-        if($_POST['character'] != null && $_POST['number'] == null) {
+        if(@$_POST['character'] != null && $_POST['number'] == null) {
             foreach($placeName as $name) {
                 if(substr($name,0,1) == $_POST['character']) {
                     array_push($outputArray, $name);
                 }
             }
+            echo implode(",", $outputArray);
 
-            print_r ($outputArray);
 
         }
         unset($outputArray);
